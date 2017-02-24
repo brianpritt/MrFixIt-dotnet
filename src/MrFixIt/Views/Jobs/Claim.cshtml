@@ -7,13 +7,38 @@
 
 <h2>Would you like to do this job?</h2>
 <hr />
-@using (Html.BeginForm())
+@using (Html.BeginForm("ClaimJob", "Job", FormMethod.Post, new { @class = "claim-job" }))
 {
     @Html.HiddenFor(model => model.JobId)
     @Html.HiddenFor(model => model.Title)
     @Html.HiddenFor(model => model.Description)
 
     <h4>@Model.Title</h4>
-    <input type="submit" value="Claim This Job" />
+    <input type="submit" value="Claim This Job" class="that-button" />
 }
+<div class="claimed"></div>
 <p>@Html.ActionLink("Back to list", "Index")</p>
+
+
+
+<form action="ClaimJob" class="submit-claim">
+    <input type="hidden" value="@Model.JobId" >
+</form>
+
+
+<script type="text/javascript">
+$('.claim-job').submit(function(event) {
+    event.preventDefault();
+    $.ajax({
+        url: '@Url.Action("ClaimJob")',
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        success: function (result) {
+            $(".that-button").hide();
+            var resultMessage = result.title + ' has been claimed';
+            $('.claimed').html(resultMessage);
+        }
+    });
+});
+</script>
