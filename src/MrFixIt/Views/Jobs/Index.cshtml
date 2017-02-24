@@ -21,7 +21,19 @@
         else
         {
             <li class="btn">This Job is claimed by @Job.Worker.FirstName @Job.Worker.LastName</li>
+            @if (Job.Pending == true)
+            {
+                <p class="btn">Marked as Pending </p>
+            }
+            else if (Job.Completed == true)
+            {
+                <p class="btn">Marked as Completed</p>
+            }
+            else
+            {
+                <p class="btn">Work has not started yet on this job</p>
 
+            }
         }
     </ul>
 
