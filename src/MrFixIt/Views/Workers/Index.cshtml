@@ -7,38 +7,34 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-
-    <div class="text-center">
-        <h4>Hello Worker @Model.FirstName @Model.LastName. You are Logged In</h4>
-        <h3>Your Current Jobs:</h3>
-        @foreach (var Job in Model.Jobs)
-        {
-            <h5>@Job.Title </h5>
-            
-            @if (Job.Pending == true)
+    
+        
+        <div class="text-center">
+            <h4>Hello @Model.FirstName @Model.LastName</h4>
+            <h3>Your Current Jobs:</h3>
+        
+            @foreach (var Job in Model.Jobs)
             {
-                <p class="btn">Status: Pending </p>
-            }
-            else if (Job.Completed == true)
-            {
-                <p class="btn">Status: Completed</p>
-            }
-            else
-            {
-                <p class="btn">Status: Not yet started</p>
+                <div class="well col-md-6">
+                    <h5>@Job.Title </h5>
 
-            }
-            <p>@Html.ActionLink("Update Status", "Status", "Jobs", new { @text = @Job.Title, id = Job.JobId })</p>
-            <hr />
+                    @if (Job.Pending == true)
+                    {
+                        <p class="btn">Status: Pending </p>
+                    }
+                    else if (Job.Completed == true)
+                    {
+                        <p class="btn">Status: Completed</p>
+                    }
+                    else
+                    {
+                        <p class="btn">Status: Not yet started</p>
 
-        }
-        @if (Model.Avaliable)
-        {
-            <h2>Please @Html.ActionLink("select a job", "Index", "Jobs").</h2>
-        }
-        else
-        {
-            <p>You are already assigned to a job.</p>
-        }
-    </div>
-}
+                    }
+                    <p>@Html.ActionLink("Update Status", "Status", "Jobs", new { @text = @Job.Title, id = Job.JobId })</p>
+                
+                </div>
+            }   
+            </div>
+        }   
+      
