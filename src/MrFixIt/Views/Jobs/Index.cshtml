@@ -9,33 +9,33 @@
 </div>
 @foreach (var Job in Model)
 {
-    <ul>
-        <li>@Job.Title</li>
+    <div class="well">
+        <h5>@Job.Title</h5>
         <ul>
             <li>@Job.Description</li>
         </ul>
         @if (Job.Worker == null)
         {
-        <li class="btn">This job is unclaimed. @Html.ActionLink("Claim This Job", "Claim", new { @text = @Job.Title, id = Job.JobId })</li>
+        <h5 class="btn">This job is unclaimed. @if(User.Identity.IsAuthenticated){ @Html.ActionLink("Claim This Job", "Claim", new { @text = @Job.Title, id = Job.JobId })}</h5>
         }
         else
         {
-            <li class="btn">This Job is claimed by @Job.Worker.FirstName @Job.Worker.LastName</li>
+            <p class="btn">This Job is claimed by @Job.Worker.FirstName @Job.Worker.LastName</p>
             @if (Job.Pending == true)
             {
-                <p class="btn">Marked as Pending </p>
+                <p class="btn">Status: Pending </p>
             }
             else if (Job.Completed == true)
             {
-                <p class="btn">Marked as Completed</p>
+                <p class="btn">Status: Completed</p>
             }
             else
             {
-                <p class="btn">Work has not started yet on this job</p>
+                <p class="btn">Status: Not yet started</p>
 
             }
         }
-    </ul>
+    </div>
 
 
     <hr />
