@@ -16,7 +16,11 @@
         </ul>
         @if (Job.Worker == null)
         {
-        <h5 class="btn">This job is unclaimed. @if(User.Identity.IsAuthenticated){ @Html.ActionLink("Claim This Job", "Claim", new { @text = @Job.Title, id = Job.JobId })}</h5>
+            <h5 class="btn">This job is unclaimed. 
+            @if(User.Identity.IsAuthenticated)
+            { 
+                @Html.ActionLink("Claim This Job", "Claim", new { @text = @Job.Title, id = Job.JobId })
+            }</h5>
         }
         else
         {
