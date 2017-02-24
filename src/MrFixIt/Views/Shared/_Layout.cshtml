@@ -24,25 +24,15 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        @Html.ActionLink("About", "Index", "About")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Hire Us", "Index", "Jobs")
-                    </li>
+                    <li>@Html.ActionLink("About", "Index", "About")</li>
+                    <li>@Html.ActionLink("Hire Us", "Index", "Jobs")</li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>
-                            @Html.ActionLink("Worker Dashboard", "Index", "Workers")
-                        </li>
+                        <li>@Html.ActionLink("Worker Dashboard", "Index", "Workers")</li>
+                        <li>@Html.ActionLink("Log Out", "LogOff", "Account")</li>
+                        <li>@Html.ActionLink(@User.Identity.Name,"Index", "Account")</li>
                     }
-
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li>
-                            @Html.ActionLink("Log Out", "LogOff", "Account")
-                        </li>
-                    }
+    
                     @if (!(User.Identity.IsAuthenticated))
                     {
                         <li class="navbar-left">@Html.ActionLink("Log in", "Login", "Account")</li>

@@ -14,6 +14,20 @@
         @foreach (var Job in Model.Jobs)
         {
             <h5>@Job.Title </h5>
+            
+            @if (Job.Pending == true)
+            {
+                <p class="btn">Status: Pending </p>
+            }
+            else if (Job.Completed == true)
+            {
+                <p class="btn">Status: Completed</p>
+            }
+            else
+            {
+                <p class="btn">Status: Not yet started</p>
+
+            }
             <p>@Html.ActionLink("Update Status", "Status", "Jobs", new { @text = @Job.Title, id = Job.JobId })</p>
             <hr />
 
