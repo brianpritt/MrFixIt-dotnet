@@ -1,9 +1,13 @@
 ﻿body {
     padding-top: 70px;
-    color: navy;
-    background-image: url("~/img/fist-with-wrench.jpg");
-        
+    color: navy;     
 }
 .about-text{
     margin: 0 20px;
+}
+well{
+    background-color: rgba(0,0,0,.3);
+}
+.home-title{
+    text-align:center;
 }
