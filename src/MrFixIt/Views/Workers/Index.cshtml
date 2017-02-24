@@ -13,7 +13,9 @@
         <h3>Your Current Jobs:</h3>
         @foreach (var Job in Model.Jobs)
         {
-            <h5>@Job.Title</h5>
+            <h5>@Job.Title </h5>
+            <p>@Html.ActionLink("Update Status", "Status", "Jobs", new { @text = @Job.Title, id = Job.JobId })</p>
+            <hr />
 
         }
         @if (Model.Avaliable)

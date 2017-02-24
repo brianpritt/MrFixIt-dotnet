@@ -40,12 +40,36 @@ namespace MrFixIt.Controllers
         }
 
         [HttpPost]
-        public IActionResult ClaimJob (Job job)
+        public IActionResult ClaimJob(Job job)
         {
             job.Worker = db.Workers.FirstOrDefault(i => i.UserName == User.Identity.Name);
             db.Entry(job).State = EntityState.Modified;
             db.SaveChanges();
             return Json(job);
         }
+        public IActionResult Status(int id)
+        {
+            var thisJob = db.Jobs.FirstOrDefault(items => items.JobId == id);
+            return View(thisJob);
+        }
+        [HttpPost]
+        public IActionResult PendingJob(Job job)
+        {
+            job.Pending = true;
+            job.Completed = false;
+            db.Entry(job).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(job);
+        }
+        public IActionResult CompleteJob(Job job)
+        {
+            job.Pending = false;
+            job.Completed = true;
+            db.Entry(job).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(job);
+        }
+
+
     }
 }

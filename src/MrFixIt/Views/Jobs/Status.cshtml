@@ -1,0 +1,61 @@
+﻿@model MrFixIt.Models.Job
+
+<h2>Would you like to do this job?</h2>
+<hr />
+
+@using (Html.BeginForm("MarkPending", "Job", FormMethod.Post, new { @class = "pending-job" }))
+{
+    @Html.HiddenFor(model => model.JobId)
+    @Html.HiddenFor(model => model.Title)
+    @Html.HiddenFor(model => model.Description)
+
+    <h4>@Model.Title</h4>
+    <input type="submit" value="Mark Pending" class="pending-button" />
+}
+@using (Html.BeginForm("MarkComplete", "Job", FormMethod.Post, new { @class = "complete-job" }))
+{
+    @Html.HiddenFor(model => model.JobId)
+    @Html.HiddenFor(model => model.Title)
+    @Html.HiddenFor(model => model.Description)
+
+    <h4>@Model.Title</h4>
+    <input type="submit" value="Mark Complete" class="complete-button" />
+}
+<div class="status"></div>
+<p>@Html.ActionLink("Back to list", "Index")</p>
+
+<script type="text/javascript">
+$('.pending-job').submit(function(event) {
+    event.preventDefault();
+    $.ajax({
+        url: '@Url.Action("PendingJob")',
+        type: 'POST',
+        dataType: 'json',
+        data: $(this).serialize(),
+        success: function (result) {
+            $(".pending-button").hide();
+            $("complete-button").hide();
+            var resultMessage = result.title + ' status has been updated';
+            $('.status').html(resultMessage);
+        }
+    });
+});
+    $('.complete-job').submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: '@Url.Action("CompleteJob")',
+            type: 'POST',
+            dataType: 'json',
+            data: $(this).serialize(),
+            success: function (result) {
+                $(".pending-button").hide();
+                $("complete-button").hide();
+                var resultMessage = result.title + ' status has been updated';
+                $('.status').html(resultMessage);
+            }
+        });
+    });
+</script>
+
+
+
