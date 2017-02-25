@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MrFixIt.Models;
 
-
-
 namespace MrFixIt.Controllers
 {
     public class HomeController : Controller
