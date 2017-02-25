@@ -10,14 +10,14 @@
     @Html.HiddenFor(model => model.Description)
 
     
-    <input type="submit" value="Mark Pending" class="pending-button" />
+    <input type="submit" value="Mark Pending" class="pending-button form-button btn" />
 }
 @using (Html.BeginForm("MarkComplete", "Job", FormMethod.Post, new { @class = "complete-job" }))
 {
     @Html.HiddenFor(model => model.JobId)
     @Html.HiddenFor(model => model.Title)
     @Html.HiddenFor(model => model.Description)
-    <input type="submit" value="Mark Complete" class="complete-button" />
+    <input type="submit" value="Mark Complete" class="complete-button form-button btn" />
 }
 <div class="status"></div>
 <p>@Html.ActionLink("Back to list", "Index")</p>

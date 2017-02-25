@@ -10,12 +10,12 @@
     <h2>Create new Job</h2>
         <hr />
         <h4>Add a new job</h4>
-        @using (Html.BeginForm())
+        @using (Html.BeginForm(new { @class = "form-group" }))
         {
             @Html.LabelFor(model => model.Title)
-            @Html.TextBoxFor(model => model.Title, new { @required = "true" })
+            @Html.TextBoxFor(model => model.Title, new { @required = "true", @class = "form-control" })
             @Html.LabelFor(model => model.Description)
-            @Html.TextBoxFor(model => model.Description, new { @required = "true" })
+            @Html.TextBoxFor(model => model.Description, new { @required = "true", @class = "form-control" })
             <input type="submit" value="Add new job" />
         }
         <p>@Html.ActionLink("Back to list", "Index")</p>

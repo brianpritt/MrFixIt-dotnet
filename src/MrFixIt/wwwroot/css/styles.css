@@ -5,13 +5,25 @@
 .about-text{
     margin: 0 20px;
 }
-well{
-    background-color: rgba(0,0,0,.3);
-    max-height: 500px;
+.index-body .well{
+    background-color: rgba(0,0,0,.2);
+    height: 275px;
+    border-radius:3px;
+    padding: 10px;
 }
 .home-title{
     text-align:center;
 }
 img{
     width:200px;
+    border-radius: 20px;
+    display:block;
+    margin: auto;
+    padding-top: 10px;
+}
+.form-button{
+    display: block;
+}
+.centering{
+    text-align:center;
 }

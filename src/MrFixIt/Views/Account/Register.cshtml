@@ -8,16 +8,16 @@
 
 <h2>Register a new worker</h2>
 <hr />
-@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-group" }))
 {
     @Html.LabelFor(m => m.Email)
-    @Html.TextBoxFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
 
     @Html.LabelFor(m => m.Password)
-    @Html.PasswordFor(m => m.Password)
+    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
 
     @Html.LabelFor(m => m.ConfirmPassword)
-    @Html.PasswordFor(m => m.ConfirmPassword)
+    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
 
-    <input type="submit" value="Register" />
+    <input type="submit" value="Register" class="btn"/>
 }

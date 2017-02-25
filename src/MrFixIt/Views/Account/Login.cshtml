@@ -8,13 +8,13 @@
 
 <h2>Log in with your account</h2>
 <hr />
-@using (Html.BeginForm())
+@using (Html.BeginForm(new { @class = "form-group" }))
 {
     @Html.LabelFor(m => m.Email)
-    @Html.TextBoxFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
 
     @Html.LabelFor(m => m.Password)
-    @Html.PasswordFor(m => m.Password)
+    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
 
     <input type="submit" value="Log in" class="btn btn-default" />
 }
